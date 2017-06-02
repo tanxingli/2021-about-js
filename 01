@@ -1,25 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title></title>
-	<link rel="stylesheet" href="">
-	<style>
-		div,p{
-			width:20px;
-			height:10px;
-		}
-	</style>
-</head>
-<body>
-<p></p>
-<p></p>
-<div></div>
-<div></div>
-	
-	<script>
-	//给div和p添加相同的样式border:1px solid red
+
+函数封装以及面向对象
+
+//给div和p添加相同的样式border:1px solid red
 		//1.获取div
 		// var _div = document.getElementsByTagName('div');
 		// console.log(_div);
@@ -97,7 +79,3 @@
 		obj.setStyle(_div);
 		obj.setStyle(_p);
 		obj._count = 2 ;
-
-	</script>
-</body>
-</html>
