@@ -79,3 +79,4 @@
 		obj.setStyle(_div);
 		obj.setStyle(_p);
 		obj._count = 2 ;
+		
