@@ -73,6 +73,33 @@ for (let i = 0; i < 2; i ++){
 }
 ```
 ###### 2 常量
+使用const我们可以去声明一个常量，常量一旦赋值就不能再修改了
+###### 2.1 常量不能重新赋值
+```
+const MY_NAME = '杨紫';
+MY_NAME = '杨旎奥';//Assignment to constant variable
+```
+###### 2.2 变量值可改变
+> 注意const限制的是不能给变量重新赋值，而变量的值本身是可以改变的,下面的操作是可以的
+```
+const names = ['香蜜'];
+names.push('欢乐颂');
+console.log(names);
+```
+###### 2.3 不同的块级作用域可以多次定义
+```
+const A = "0";
+{
+    const A = "A";
+    console.log(A)
+}
+{
+    const A = "B";
+    console.log(A)
+}
+console.log(A)
+```
+##### 3. 解构
 ```
 for (let i = 0; i < 2; i ++){
     console.log('inner',i);
@@ -80,75 +107,70 @@ for (let i = 0; i < 2; i ++){
 }
 //结果 Cannot access 'i' before initialization
 ```
-###### 1.2.5 不存在变量的预解释
+###### 3.1 解析数组
+解构意思就是分解一个东西的结构,可以用一种类似数组的方式定义N个变量，可以将一个数组中的值按照规则赋值过去
 ```
-for (let i = 0; i < 2; i ++){
-    console.log('inner',i);
-    let i = 100;
+var [name,age] = ['杨紫',8];
+console.log(name,age);
+```
+###### 3.2 嵌套赋值
+```
+let [x, [y], z] = [1, [2.1, 2.2]];
+    console.log(x, y, z);
+
+    let [x, [y,z]] = [1, [2.1, 2.2]];
+    console.log(x,y,z);
+
+    let [json,arr,num] = [{name:'zfpx'},[1,2],3];
+    console.log(json,arr,num);
+
+```
+###### 3.3 省略赋值
+```
+let [, , x] = [1, 2, 3];
+console.log(x);
+```
+###### 3.4 解构对象
+```
+var obj = {name:'zfpx',age:8};
+//对象里的name属性的值会交给name这个变量，age的值会交给age这个变量
+var {name,age} = obj;
+//对象里的name属性的值会交给myname这个变量，age的值会交给myage这个变量
+let {name: myname, age: myage} = obj;
+console.log(name,age,myname,myage);
+```
+###### 3.5 默认值
+在赋值和传参的时候可以使用默认值
+```
+flet [a = "a", b = "b", c =new Error('C必须指定')] = [1, , 3];
+console.log(a, b, c);
+
+function ajax (options) {
+    var method = options.method || "get";
+    var data = options.data || {};
+    //.....
 }
-//结果 Cannot access 'i' before initialization
-```
-###### 1.2.5 不存在变量的预解释
-```
-for (let i = 0; i < 2; i ++){
-    console.log('inner',i);
-    let i = 100;
+function ajax ({method = "get", data}) {
+    console.log(arguments);
 }
-//结果 Cannot access 'i' before initialization
+ajax({
+    method: "post",
+    data: {"name": "zfpx"}
+});
+
 ```
-###### 1.2.5 不存在变量的预解释
+##### 4. 字符串
+###### 4.1 模板字符串
+模板字符串用反引号(数字1左边的那个键)包含，其中的变量用${}括起来
 ```
-for (let i = 0; i < 2; i ++){
-    console.log('inner',i);
-    let i = 100;
-}
-//结果 Cannot access 'i' before initialization
-```
-###### 1.2.5 不存在变量的预解释
-```
-for (let i = 0; i < 2; i ++){
-    console.log('inner',i);
-    let i = 100;
-}
-//结果 Cannot access 'i' before initialization
-```
-###### 1.2.5 不存在变量的预解释
-```
-for (let i = 0; i < 2; i ++){
-    console.log('inner',i);
-    let i = 100;
-}
-//结果 Cannot access 'i' before initialization
-```
-###### 1.2.5 不存在变量的预解释
-```
-for (let i = 0; i < 2; i ++){
-    console.log('inner',i);
-    let i = 100;
-}
-//结果 Cannot access 'i' before initialization
-```
-###### 1.2.5 不存在变量的预解释
-```
-for (let i = 0; i < 2; i ++){
-    console.log('inner',i);
-    let i = 100;
-}
-//结果 Cannot access 'i' before initialization
-```
-###### 1.2.5 不存在变量的预解释
-```
-for (let i = 0; i < 2; i ++){
-    console.log('inner',i);
-    let i = 100;
-}
-//结果 Cannot access 'i' before initialization
-```
-###### 1.2.5 不存在变量的预解释
-```
-for (let i = 0; i < 2; i ++){
-    console.log('inner',i);
-    let i = 100;
-}
-//结果 Cannot access 'i' before initialization
+var name = 'zfpx',age = 8;
+let desc = `${name} is ${age} old!`;
+console.log(desc);
+
+//所有模板字符串的空格和换行，都是被保留的
+var str = `<ul>
+<li>a</li>
+<li>b</li>
+</ul>`;
+console.log(str);
 ```
